@@ -9,13 +9,14 @@
  */
 int is_bst(const binary_tree_t *tree, int min, int max)
 {
-    if (tree == NULL)
-        return (1);
+	if (tree == NULL)
+		return (1);
 
-    if (tree->n <= min || tree->n >= max)
-        return (0);
+	if (tree->n <= min || tree->n >= max)
+		return (0);
 
-    return (is_bst(tree->left, min, tree->n) && is_bst(tree->right, tree->n, max));
+	return (is_bst(tree->left, min, tree->n)
+			&& is_bst(tree->right, tree->n, max));
 }
 
 /**
@@ -25,13 +26,13 @@ int is_bst(const binary_tree_t *tree, int min, int max)
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-    if (tree == NULL)
-        return (0);
+	if (tree == NULL)
+		return (0);
 
-    size_t left_height = binary_tree_height(tree->left);
-    size_t right_height = binary_tree_height(tree->right);
+	size_t left_height = binary_tree_height(tree->left);
+	size_t right_height = binary_tree_height(tree->right);
 
-    return (1 + (left_height > right_height ? left_height : right_height));
+	return (1 + (left_height > right_height ? left_height : right_height));
 }
 
 /**
@@ -41,22 +42,22 @@ size_t binary_tree_height(const binary_tree_t *tree)
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
-    if (tree == NULL)
-        return (0);
+	if (tree == NULL)
+		return (0);
 
-    int left_height, right_height;
+	int left_height, right_height;
 
-    left_height = binary_tree_height(tree->left);
-    right_height = binary_tree_height(tree->right);
+	left_height = binary_tree_height(tree->left);
+	right_height = binary_tree_height(tree->right);
 
-    if (abs(left_height - right_height) <= 1 && is_bst(tree, INT_MIN, INT_MAX))
-    {
-        int left_avl = binary_tree_is_avl(tree->left);
-        int right_avl = binary_tree_is_avl(tree->right);
+	if (abs(left_height - right_height) <= 1 && is_bst(tree, INT_MIN, INT_MAX))
+	{
+		int left_avl = binary_tree_is_avl(tree->left);
+		int right_avl = binary_tree_is_avl(tree->right);
 
-        if ((left_avl && right_avl) || (!tree->left && !tree->right))
-            return (1);
-    }
+		if ((left_avl && right_avl) || (!tree->left && !tree->right))
+			return (1);
+	}
 
-    return (0);
+	return (0);
 }

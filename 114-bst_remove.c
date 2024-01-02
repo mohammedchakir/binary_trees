@@ -8,10 +8,11 @@
  */
 bst_t *find_successor(bst_t *node)
 {
-    bst_t *current = node->right;
-    while (current && current->left)
-        current = current->left;
-    return (current);
+	bst_t *current = node->right;
+
+	while (current && current->left)
+		current = current->left;
+	return (current);
 }
 
 /**
@@ -23,37 +24,34 @@ bst_t *find_successor(bst_t *node)
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-    if (!root)
-        return (root);
+	if (!root)
+		return (root);
 
-    if (value < root->n)
-        root->left = bst_remove(root->left, value);
-    else if (value > root->n)
-        root->right = bst_remove(root->right, value);
-    else
-    {
-        // Node with only one child or no child
-        if (!root->left)
-        {
-            bst_t *temp = root->right;
-            free(root);
-            return (temp);
-        }
-        else if (!root->right)
-        {
-            bst_t *temp = root->left;
-            free(root);
-            return (temp);
-        }
+	if (value < root->n)
+		root->left = bst_remove(root->left, value);
+	else if (value > root->n)
+		root->right = bst_remove(root->right, value);
+	else
+	{
+		if (!root->left)
+		{
+			bst_t *temp = root->right;
 
-        // Node with two children, get the in-order successor
-        bst_t *temp = find_successor(root);
+			free(root);
+			return (temp);
+		}
+		else if (!root->right)
+		{
+			bst_t *temp = root->left;
 
-        // Copy the in-order successor's data to this node
-        root->n = temp->n;
+			free(root);
+			return (temp);
+		}
 
-        // Delete the in-order successor
-        root->right = bst_remove(root->right, temp->n);
-    }
-    return (root);
+		bst_t *temp = find_successor(root);
+
+		root->n = temp->n;
+		root->right = bst_remove(root->right, temp->n);
+	}
+	return (root);
 }
