@@ -1,13 +1,13 @@
 #include "binary_trees.h"
 
 /**
- * is_bst - Checks if a binary tree is a BST.
+ * check_bst - Checks if a binary tree is a BST.
  * @tree: Pointer to the root node of the tree to check.
  * @min: Minimum allowed value.
  * @max: Maximum allowed value.
  * Return: 1 if tree is a BST, 0 otherwise.
  */
-static int is_bst(const binary_tree_t *tree, int min, int max)
+static int check_bst(const binary_tree_t *tree, int min, int max)
 {
     if (tree == NULL)
         return (1);
@@ -15,42 +15,32 @@ static int is_bst(const binary_tree_t *tree, int min, int max)
     if (tree->n <= min || tree->n >= max)
         return (0);
 
-    return (is_bst(tree->left, min, tree->n) && is_bst(tree->right, tree->n, max));
+    return (check_bst(tree->left, min, tree->n) &&
+            check_bst(tree->right, tree->n, max));
 }
 
 /**
- * height - Measures the height of a binary tree.
- * @tree: Pointer to the root node of the tree to measure the height.
- * Return: The height of the tree.
+ * check_height - Checks the height of the tree and if it's balanced.
+ * @tree: Pointer to the root node of the tree to check.
+ * Return: Height of the tree if it's balanced, -1 if not.
  */
-static int height(const binary_tree_t *tree)
+static int check_height(const binary_tree_t *tree)
 {
     int left_height, right_height;
 
     if (tree == NULL)
         return (0);
 
-    left_height = height(tree->left);
-    right_height = height(tree->right);
+    left_height = check_height(tree->left);
+    if (left_height == -1) return (-1);  // Left subtree is not balanced
 
-    if (left_height > right_height)
-        return (left_height + 1);
-    else
-        return (right_height + 1);
-}
+    right_height = check_height(tree->right);
+    if (right_height == -1) return (-1);  // Right subtree is not balanced
 
-/**
- * abs_diff - Calculates the absolute difference between two integers.
- * @a: First integer.
- * @b: Second integer.
- * Return: Absolute difference between a and b.
- */
-static int abs_diff(int a, int b)
-{
-    if (a > b)
-        return (a - b);
-    else
-        return (b - a);
+    if (abs(left_height - right_height) > 1)
+        return (-1);  // Current tree is not balanced
+
+    return (left_height > right_height ? left_height + 1 : right_height + 1);
 }
 
 /**
@@ -60,22 +50,11 @@ static int abs_diff(int a, int b)
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
-    int left_height, right_height;
-
     if (tree == NULL)
         return (0);
 
-    if (!is_bst(tree, INT_MIN, INT_MAX))
+    if (!check_bst(tree, INT_MIN, INT_MAX))
         return (0);
 
-    left_height = height(tree->left);
-    right_height = height(tree->right);
-
-    if (abs_diff(left_height, right_height) > 1)
-        return (0);
-
-    if (!binary_tree_is_avl(tree->left) || !binary_tree_is_avl(tree->right))
-        return (0);
-
-    return (1);
+    return (check_height(tree) != -1);
 }
