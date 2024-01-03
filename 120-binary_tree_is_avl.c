@@ -20,9 +20,11 @@ int is_bst(const binary_tree_t *tree, int min, int max)
 }
 
 /**
- * check_height_balance - Calculates the height of a binary tree and checks if it's balanced.
+ * check_height_balance - Calculates the height of a binary tree
+ * and checks if it's balanced.
  * @tree: Pointer to the root node of the tree to check.
- * @is_balanced: Pointer to an integer flag that indicates if the tree is balanced.
+ * @is_balanced: Pointer to an integer flag that indicates
+ * if the tree is balanced.
  *
  * Return: Height of the tree.
  */
@@ -46,7 +48,8 @@ int check_height_balance(const binary_tree_t *tree, int *is_balanced)
  * binary_tree_is_avl - Checks if a binary tree is a valid AVL Tree.
  * @tree: Pointer to the root node of the tree to check.
  *
- * Return: 1 if the tree is a valid AVL Tree, 0 otherwise. If tree is NULL, returns 0.
+ * Return: 1 if the tree is a valid AVL Tree, 0 otherwise.
+ * If tree is NULL, returns 0.
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
