@@ -12,14 +12,14 @@
  */
 int check_bst(const binary_tree_t *tree, int min, int max)
 {
-    if (!tree)
-        return (1);
+	if (!tree)
+		return (1);
 
-    if (tree->n < min || tree->n > max)
-        return (0);
+	if (tree->n < min || tree->n > max)
+		return (0);
 
-    return (check_bst(tree->left, min, tree->n - 1) &&
-            check_bst(tree->right, tree->n + 1, max));
+	return (check_bst(tree->left, min, tree->n - 1) &&
+			check_bst(tree->right, tree->n + 1, max));
 }
 
 /**
@@ -30,15 +30,15 @@ int check_bst(const binary_tree_t *tree, int min, int max)
  */
 int height(const binary_tree_t *tree)
 {
-    int left_height, right_height;
+	int left_height, right_height;
 
-    if (!tree)
-        return (0);
+	if (!tree)
+		return (0);
 
-    left_height = height(tree->left);
-    right_height = height(tree->right);
+	left_height = height(tree->left);
+	right_height = height(tree->right);
 
-    return ((left_height > right_height ? left_height : right_height) + 1);
+	return ((left_height > right_height ? left_height : right_height) + 1);
 }
 
 /**
@@ -49,17 +49,18 @@ int height(const binary_tree_t *tree)
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
-    int balance;
+	int balance;
 
-    if (!tree)
-        return (1);
+	if (!tree)
+		return (1);
 
-    if (!check_bst(tree, INT_MIN, INT_MAX))
-        return (0);
+	if (!check_bst(tree, INT_MIN, INT_MAX))
+		return (0);
 
-    balance = height(tree->left) - height(tree->right);
-    if (abs(balance) > 1)
-        return (0);
+	balance = height(tree->left) - height(tree->right);
+	if (abs(balance) > 1)
+		return (0);
 
-    return (binary_tree_is_avl(tree->left) && binary_tree_is_avl(tree->right));
+	return (binary_tree_is_avl(tree->left) &&
+			binary_tree_is_avl(tree->right));
 }
