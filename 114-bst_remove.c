@@ -24,34 +24,32 @@ bst_t *find_successor(bst_t *node)
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-	if (!root)
-		return (root);
+    if (!root)
+        return root;
 
-	if (value < root->n)
-		root->left = bst_remove(root->left, value);
-	else if (value > root->n)
-		root->right = bst_remove(root->right, value);
-	else
-	{
-		if (!root->left)
-		{
-			bst_t *temp = root->right;
+    if (value < root->n)
+        root->left = bst_remove(root->left, value);
+    else if (value > root->n)
+        root->right = bst_remove(root->right, value);
+    else
+    {
+        if (!root->left)
+        {
+            bst_t *temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (!root->right)
+        {
+            bst_t *temp = root->left;
+            free(root);
+            return temp;
+        }
 
-			free(root);
-			return (temp);
-		}
-		else if (!root->right)
-		{
-			bst_t *temp = root->left;
+        bst_t *temp = find_successor(root);
 
-			free(root);
-			return (temp);
-		}
-
-		bst_t *temp = find_successor(root);
-
-		root->n = temp->n;
-		root->right = bst_remove(root->right, temp->n);
-	}
-	return (root);
+        root->n = temp->n;
+        root->right = bst_remove(root->right, temp->n);
+    }
+    return root;
 }
