@@ -9,7 +9,8 @@
  * @value: The value to be inserted.
  * Return: A pointer to the new root after insertion, otherwise NULL.
  */
-avl_t *recursive_insert(avl_t **root, avl_t *parent, avl_t **new_node, int value)
+avl_t *recursive_insert(avl_t **root, avl_t *parent,
+		avl_t **new_node, int value)
 {
 	int balance_factor;
 
