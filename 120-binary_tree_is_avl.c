@@ -1,8 +1,10 @@
 #include "binary_trees.h"
 
 /* Declare helper functions */
-int bst_check(const binary_tree_t *tree, const binary_tree_t *min, const binary_tree_t *max);
-int is_avl(const binary_tree_t *tree, const binary_tree_t *min, const binary_tree_t *max);
+int bst_check(const binary_tree_t *tree, const binary_tree_t *min,
+		const binary_tree_t *max);
+int is_avl(const binary_tree_t *tree, const binary_tree_t *min,
+		const binary_tree_t *max);
 int tree_height(const binary_tree_t *tree);
 
 /**
@@ -13,12 +15,10 @@ int tree_height(const binary_tree_t *tree);
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
-    /* Base case: an empty tree is an AVL Tree */
-    if (tree == NULL)
-        return 1;
+	if (tree == NULL)
+		return (1);
 
-    /* Check if the tree is a BST and satisfies AVL properties */
-    return (bst_check(tree, NULL, NULL) && is_avl(tree, NULL, NULL));
+	return (bst_check(tree, NULL, NULL) && is_avl(tree, NULL, NULL));
 }
 
 /**
@@ -29,18 +29,17 @@ int binary_tree_is_avl(const binary_tree_t *tree)
  *
  * Return: 1 if tree is a valid BST, 0 otherwise
  */
-int bst_check(const binary_tree_t *tree, const binary_tree_t *min, const binary_tree_t *max)
+int bst_check(const binary_tree_t *tree, const binary_tree_t *min,
+		const binary_tree_t *max)
 {
-    /* Base case: an empty tree is a BST */
-    if (tree == NULL)
-        return 1;
+	if (tree == NULL)
+		return (1);
 
-    /* Check if the current node value is within the valid range */
-    if ((min != NULL && tree->n <= min->n) || (max != NULL && tree->n >= max->n))
-        return 0;
+	if ((min != NULL && tree->n <= min->n) || (max != NULL && tree->n >= max->n))
+		return (0);
 
-    /* Recursively check the left and right subtrees */
-    return (bst_check(tree->left, min, tree) && bst_check(tree->right, tree, max));
+	return (bst_check(tree->left, min, tree) &&
+			bst_check(tree->right, tree, max));
 }
 
 /**
@@ -51,24 +50,22 @@ int bst_check(const binary_tree_t *tree, const binary_tree_t *min, const binary_
  *
  * Return: 1 if tree satisfies AVL properties, 0 otherwise
  */
-int is_avl(const binary_tree_t *tree, const binary_tree_t *min, const binary_tree_t *max)
+int is_avl(const binary_tree_t *tree, const binary_tree_t *min,
+		const binary_tree_t *max)
 {
-    int left_height, right_height, balance_factor;
+	int left_height, right_height, balance_factor;
 
-    /* Base case: an empty tree satisfies AVL properties */
-    if (tree == NULL)
-        return 1;
+	if (tree == NULL)
+		return (1);
 
-    /* Check if the tree is balanced */
-    left_height = tree_height(tree->left);
-    right_height = tree_height(tree->right);
-    balance_factor = left_height - right_height;
+	left_height = tree_height(tree->left);
+	right_height = tree_height(tree->right);
+	balance_factor = left_height - right_height;
 
-    if (balance_factor > 1 || balance_factor < -1)
-        return 0;
+	if (balance_factor > 1 || balance_factor < -1)
+		return (0);
 
-    /* Recursively check the left and right subtrees */
-    return (is_avl(tree->left, min, tree) && is_avl(tree->right, tree, max));
+	return (is_avl(tree->left, min, tree) && is_avl(tree->right, tree, max));
 }
 
 /**
@@ -79,13 +76,13 @@ int is_avl(const binary_tree_t *tree, const binary_tree_t *min, const binary_tre
  */
 int tree_height(const binary_tree_t *tree)
 {
-    int left_height, right_height;
+	int left_height, right_height;
 
-    if (tree == NULL)
-        return 0;
+	if (tree == NULL)
+		return (0);
 
-    left_height = tree_height(tree->left);
-    right_height = tree_height(tree->right);
+	left_height = tree_height(tree->left);
+	right_height = tree_height(tree->right);
 
-    return (left_height > right_height ? left_height : right_height) + 1;
+	return ((left_height > right_height ? left_height : right_height) + 1);
 }
