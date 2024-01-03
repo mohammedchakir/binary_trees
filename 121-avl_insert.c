@@ -1,5 +1,6 @@
 #include "binary_trees.h"
 
+
 /**
  * recursive_insert - recursively inserts a node in an AVL tree.
  * @root: A pointer to the root node of the AVL tree.
@@ -69,5 +70,5 @@ avl_t *avl_insert(avl_t **root, int value)
 	}
 
 	recursive_insert(root, *root, &new_node, value);
-	return new_node;
+	return (new_node);
 }
