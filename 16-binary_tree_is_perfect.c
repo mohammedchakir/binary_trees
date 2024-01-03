@@ -8,13 +8,14 @@
  */
 int _depth(const binary_tree_t *tree)
 {
-    int d = 0;
-    while (tree)
-    {
-        d++;
-        tree = tree->left;
-    }
-    return d;
+	int d = 0;
+
+	while (tree)
+	{
+		d++;
+		tree = tree->left;
+	}
+	return (d);
 }
 
 /**
@@ -27,17 +28,17 @@ int _depth(const binary_tree_t *tree)
  */
 int is_perfect_recursive(const binary_tree_t *tree, int d, int level)
 {
-    if (tree == NULL)
-        return 1;
+	if (tree == NULL)
+		return (1);
 
-    if (tree->left == NULL && tree->right == NULL)
-        return (d == level + 1);
+	if (tree->left == NULL && tree->right == NULL)
+		return (d == level + 1);
 
-    if (tree->left == NULL || tree->right == NULL)
-        return 0;
+	if (tree->left == NULL || tree->right == NULL)
+		return (0);
 
-    return is_perfect_recursive(tree->left, d, level + 1) &&
-           is_perfect_recursive(tree->right, d, level + 1);
+	return (is_perfect_recursive(tree->left, d, level + 1) &&
+		is_perfect_recursive(tree->right, d, level + 1));
 }
 
 /**
@@ -48,11 +49,11 @@ int is_perfect_recursive(const binary_tree_t *tree, int d, int level)
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-    int d;
+	int d;
 
-    if (tree == NULL)
-        return 0;
+	if (tree == NULL)
+		return (0);
 
-    d = _depth(tree);
-    return is_perfect_recursive(tree, d, 0);
+	d = _depth(tree);
+	return (is_perfect_recursive(tree, d, 0));
 }
