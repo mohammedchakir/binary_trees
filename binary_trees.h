@@ -79,4 +79,5 @@ int *heap_to_sorted_array(heap_t *heap, size_t *size);
 int is_bst(const binary_tree_t *tree, int min, int max);
 int check_height_balance(const binary_tree_t *tree, int *is_balanced);
 
+
 #endif /* BINARY_TREES_H */
