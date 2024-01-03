@@ -8,9 +8,9 @@
  */
 int node_count(const binary_tree_t *tree)
 {
-    if (tree == NULL)
-        return 0;
-    return 1 + node_count(tree->left) + node_count(tree->right);
+	if (tree == NULL)
+		return (0);
+	return (1 + node_count(tree->left) + node_count(tree->right));
 }
 
 /**
@@ -23,14 +23,15 @@ int node_count(const binary_tree_t *tree)
  */
 int is_heap_util(const binary_tree_t *tree, int index, int num_nodes)
 {
-    if (tree == NULL)
-        return 1;
+	if (tree == NULL)
+		return (1);
 
-    if (index >= num_nodes)
-        return 0;
+	if (index >= num_nodes)
+		return (0);
 
-    return (tree->left == NULL || (tree->n >= tree->left->n && is_heap_util(tree->left, 2 * index + 1, num_nodes))) &&
-           (tree->right == NULL || (tree->n >= tree->right->n && is_heap_util(tree->right, 2 * index + 2, num_nodes)));
+	return ((tree->left == NULL || (tree->n >= tree->left->n &&
+					is_heap_util(tree->left, 2 * index + 1, num_nodes)))
+			&& (tree->right == NULL || (tree->n >= tree->right->n && is_heap_util(tree->right, 2 * index + 2, num_nodes)));
 }
 
 /**
@@ -41,6 +42,6 @@ int is_heap_util(const binary_tree_t *tree, int index, int num_nodes)
  */
 int binary_tree_is_heap(const binary_tree_t *tree)
 {
-    int num_nodes = node_count(tree);
-    return is_heap_util(tree, 0, num_nodes);
+int num_nodes = node_count(tree);
+return is_heap_util(tree, 0, num_nodes);
 }
