@@ -1,31 +1,29 @@
 #include "binary_trees.h"
 
 /**
- * find_successor - Finds the in-order successor of a node
- * @node: Pointer to the node to find the successor of
+ * bst_min - Finds the minimum value in a BST.
+ * @root: The root of the BST.
  *
- * Return: Pointer to the in-order successor node
+ * Return: Pointer to the node with the minimum value.
  */
-bst_t *find_successor(bst_t *node)
+bst_t *bst_min(bst_t *root)
 {
-	bst_t *current = node->right;
-
-	while (current && current->left)
-		current = current->left;
-	return (current);
+    while (root && root->left)
+        root = root->left;
+    return (root);
 }
 
 /**
- * bst_remove - Removes a node from a Binary Search Tree (BST)
- * @root: Pointer to the root node of the tree
- * @value: The value to remove from the tree
+ * bst_remove - Removes a node from a Binary Search Tree.
+ * @root: A pointer to the root node of the tree.
+ * @value: The value to remove from the tree.
  *
- * Return: Pointer to the new root node after removing the value
+ * Return: A pointer to the new root node after deletion.
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-    if (!root)
-        return root;
+    if (root == NULL)
+        return (NULL);
 
     if (value < root->n)
         root->left = bst_remove(root->left, value);
@@ -33,23 +31,22 @@ bst_t *bst_remove(bst_t *root, int value)
         root->right = bst_remove(root->right, value);
     else
     {
-        if (!root->left)
+        if (root->left == NULL)
         {
             bst_t *temp = root->right;
             free(root);
-            return temp;
+            return (temp);
         }
-        else if (!root->right)
+        else if (root->right == NULL)
         {
             bst_t *temp = root->left;
             free(root);
-            return temp;
+            return (temp);
         }
 
-        bst_t *temp = find_successor(root);
-
+        bst_t *temp = bst_min(root->right);
         root->n = temp->n;
         root->right = bst_remove(root->right, temp->n);
     }
-    return root;
+    return (root);
 }
