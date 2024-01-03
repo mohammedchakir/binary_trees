@@ -2,7 +2,12 @@
 #include <limits.h>
 
 /**
- * Checks if a binary tree is a BST.
+ * is_bst - Checks if a binary tree is a Binary Search Tree (BST).
+ * @tree: Pointer to the root node of the tree to check.
+ * @min: Minimum allowed value for the node's data.
+ * @max: Maximum allowed value for the node's data.
+ *
+ * Return: 1 if the tree is a BST, 0 otherwise.
  */
 int is_bst(const binary_tree_t *tree, int min, int max)
 {
@@ -15,7 +20,11 @@ int is_bst(const binary_tree_t *tree, int min, int max)
 }
 
 /**
- * Calculates the height of a binary tree and checks if it's balanced.
+ * check_height_balance - Calculates the height of a binary tree and checks if it's balanced.
+ * @tree: Pointer to the root node of the tree to check.
+ * @is_balanced: Pointer to an integer flag that indicates if the tree is balanced.
+ *
+ * Return: Height of the tree.
  */
 int check_height_balance(const binary_tree_t *tree, int *is_balanced)
 {
@@ -34,7 +43,10 @@ int check_height_balance(const binary_tree_t *tree, int *is_balanced)
 }
 
 /**
- * Checks if a binary tree is a valid AVL Tree.
+ * binary_tree_is_avl - Checks if a binary tree is a valid AVL Tree.
+ * @tree: Pointer to the root node of the tree to check.
+ *
+ * Return: 1 if the tree is a valid AVL Tree, 0 otherwise. If tree is NULL, returns 0.
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
