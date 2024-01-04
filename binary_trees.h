@@ -78,7 +78,7 @@ int *heap_to_sorted_array(heap_t *heap, size_t *size);
 /* Prototypes helper functions */
 int is_bst(const binary_tree_t *tree, int min, int max);
 int check_height_balance(const binary_tree_t *tree, int *is_balanced);
-
+void build_avl_tree(avl_t **root, int *array, size_t lo, size_t hi);
 
 
 #endif /* BINARY_TREES_H */
