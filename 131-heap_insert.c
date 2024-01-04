@@ -32,7 +32,7 @@ heap_t *heap_insert(heap_t **root, int value)
 	leaves & 1 ? (tree->right = new_node) : (tree->left = new_node);
 
 	current = new_node;
-	for (current->parent &&
+	for (; current->parent &&
 (current->n > current->parent->n); current = current->parent)
 	{
 		tmp = current->n;
