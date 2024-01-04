@@ -35,13 +35,15 @@ int find_successor(bst_t *node)
 	int left = 0;
 
 	if (node == NULL)
-		return 0;
+	{
+		return (0);
+	}
 	else
 	{
 		left = find_successor(node->left);
 		if (left == 0)
-			return node->n;
-		return left;
+			return (node->n);
+		return (left);
 	}
 }
 
@@ -61,7 +63,7 @@ int remove_node(bst_t *node)
 		else
 			node->parent->left = NULL;
 		free(node);
-		return 0;
+		return (0);
 	}
 	else if ((!node->left && node->right) || (!node->right && node->left))
 	{
@@ -74,13 +76,13 @@ int remove_node(bst_t *node)
 
 		child->parent = node->parent;
 		free(node);
-		return 0;
+		return (0);
 	}
 	else
 	{
 		new_value = find_successor(node->right);
 		node->n = new_value;
-		return new_value;
+		return (new_value);
 	}
 }
 
@@ -95,7 +97,7 @@ bst_t *bst_remove(bst_t *root, int value)
 	int type = 0;
 
 	if (root == NULL)
-		return NULL;
+		return (NULL);
 
 	if (value < root->n)
 		bst_remove(root->left, value);
@@ -108,9 +110,9 @@ bst_t *bst_remove(bst_t *root, int value)
 			bst_remove(root->right, type);
 	}
 	else
-		return NULL;
+		return (NULL);
 
-	return root;
+	return (root);
 }
 
 /**
@@ -124,8 +126,8 @@ avl_t *avl_remove(avl_t *root, int value)
 	avl_t *root_a = (avl_t *)bst_remove((bst_t *)root, value);
 
 	if (root_a == NULL)
-		return NULL;
+		return (NULL);
 
 	balance_tree(&root_a);
-	return root_a;
+	return (root_a);
 }
