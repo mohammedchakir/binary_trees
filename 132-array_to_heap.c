@@ -9,7 +9,7 @@
  */
 heap_t *array_to_heap(int *array, size_t size)
 {
-    unsigned int a;
+	unsigned int a;
 	heap_t *root = NULL;
 
 	for (a = 0; a < size; a++)
