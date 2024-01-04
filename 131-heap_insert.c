@@ -33,7 +33,7 @@ heap_t *heap_insert(heap_t **root, int value)
 
 	current = new_node;
 	for (; current->parent &&
-(current->n > current->parent->n); current = current->parent)
+			(current->n > current->parent->n); current = current->parent)
 	{
 		tmp = current->n;
 		current->n = current->parent->n;
