@@ -1,56 +1,46 @@
 #include "binary_trees.h"
-void heapify_up(heap_t *node);
+
 /**
  * heap_insert - Inserts a value into a Max Binary Heap
  * @root: A double pointer to the root node of the heap
- * @value: The value to insert
+ * @value: The value to be inserted
  *
  * Return: A pointer to the created node, NULL on failure
  */
 heap_t *heap_insert(heap_t **root, int value)
 {
+	heap_t *tree, *new_node, *current;
+	int tree_size, leaves, sub, bit, level, tmp;
+
 	if (!root)
 		return NULL;
 
 	if (!(*root))
 		return (*root = binary_tree_node(NULL, value));
 
-	heap_t *current = *root;
-	int tree_size = binary_tree_size(current);
-	int leaves = tree_size;
-
-	int level, sub, bit;
+	tree = *root;
+	tree_size = binary_tree_size(tree);
+	leaves = tree_size;
 
 	for (level = 0, sub = 1; leaves >= sub; sub *= 2, level++)
 		leaves -= sub;
 
 	for (bit = 1 << (level - 1); bit != 1; bit >>= 1)
-		current = leaves & bit ? current->right : current->left;
+		tree = leaves & bit ? tree->right : tree->left;
 
-	heap_t *new_node = binary_tree_node(current, value);
-	leaves & 1 ? (current->right = new_node) : (current->left = new_node);
+	new_node = binary_tree_node(tree, value);
+	leaves & 1 ? (tree->right = new_node) : (tree->left = new_node);
 
-	heapify_up(new_node);
-
-	return new_node;
-}
-
-/**
- * heapify_up - Moves the newly inserted node up to maintain heap property
- * @node: The node to move up
- */
-void heapify_up(heap_t *node)
-{
-	heap_t *current = node;
-	int tmp;
-
-	while (current->parent && (current->n > current->parent->n))
+	current = new_node;
+	for (; current->parent && (current->n > current->parent->n); current = current->parent)
 	{
 		tmp = current->n;
 		current->n = current->parent->n;
 		current->parent->n = tmp;
-		current = current->parent;
+		new_node = new_node->parent;
 	}
+
+	return new_node;
 }
 
 /**
