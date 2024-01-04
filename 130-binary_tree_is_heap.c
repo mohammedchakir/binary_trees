@@ -8,33 +8,34 @@
  */
 int binary_tree_is_heap(const binary_tree_t *tree)
 {
-    if (!tree)
-        return (0);
+	if (!tree)
+		return (0);
 
-    return (is_max_heap(tree));
+	return (is_max_heap(tree));
 }
 
 /**
- * is_max_heap - Helper function to check if a binary tree is a valid Max Binary Heap
+ * is_max_heap - Helper function to check if a binary tree
+ * is a valid Max Binary Heap
  * @tree: A pointer to the root node of the tree to check
  *
  * Return: 1 if the tree is a valid Max Binary Heap, 0 otherwise
  */
 int is_max_heap(const binary_tree_t *tree)
 {
-    if (!tree)
-        return (1);
+	if (!tree)
+		return (1);
 
-    if (!binary_tree_is_complete(tree))
-        return (0);
+	if (!binary_tree_is_complete(tree))
+		return (0);
 
-    if (tree->left && tree->left->n > tree->n)
-        return (0);
+	if (tree->left && tree->left->n > tree->n)
+		return (0);
 
-    if (tree->right && tree->right->n > tree->n)
-        return (0);
+	if (tree->right && tree->right->n > tree->n)
+		return (0);
 
-    return (is_max_heap(tree->left) && is_max_heap(tree->right));
+	return (is_max_heap(tree->left) && is_max_heap(tree->right));
 }
 
 /**
@@ -45,14 +46,14 @@ int is_max_heap(const binary_tree_t *tree)
  */
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
-    size_t size;
+	size_t size;
 
-    if (!tree)
-        return (0);
+	if (!tree)
+		return (0);
 
-    size = binary_tree_size(tree);
+	size = binary_tree_size(tree);
 
-    return (is_complete_helper(tree, 0, size));
+	return (is_complete_helper(tree, 0, size));
 }
 
 /**
@@ -65,14 +66,14 @@ int binary_tree_is_complete(const binary_tree_t *tree)
  */
 int is_complete_helper(const binary_tree_t *tree, size_t index, size_t size)
 {
-    if (!tree)
-        return (1);
+	if (!tree)
+		return (1);
 
-    if (index >= size)
-        return (0);
+	if (index >= size)
+		return (0);
 
-    return (is_complete_helper(tree->left, 2 * index + 1, size) &&
-           is_complete_helper(tree->right, 2 * index + 2, size));
+	return (is_complete_helper(tree->left, 2 * index + 1, size) &&
+			is_complete_helper(tree->right, 2 * index + 2, size));
 }
 
 /**
@@ -83,8 +84,8 @@ int is_complete_helper(const binary_tree_t *tree, size_t index, size_t size)
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-    if (!tree)
-        return (0);
+	if (!tree)
+		return (0);
 
-    return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
+	return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
 }
