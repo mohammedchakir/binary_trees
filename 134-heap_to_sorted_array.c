@@ -1,44 +1,52 @@
 #include "binary_trees.h"
-size_t heap_size(heap_t *root);
+
 /**
- * heap_to_sorted_array - Converts a Binary Max Heap to a sorted array of integers
- * @heap: Pointer to the root node of the heap
- * @size: Address to store the size of the array
- * Return: Pointer to the sorted array of integers
+ * tree_size - measures the sum of heights of a binary tree
+ * @tree: pointer to the root node of the tree to measure the height
+ *
+ * Return: Height or 0 if tree is NULL
  */
-int *heap_to_sorted_array(heap_t *heap, size_t *size)
+size_t tree_size(const binary_tree_t *tree)
 {
-    if (heap == NULL || size == NULL)
-    {
-        return NULL;
-    }
+    size_t height_l = 0, height_r = 0;
 
-    *size = heap_size(heap);
+    if (!tree)
+        return (0);
 
-    int *sorted_array = malloc(*size * sizeof(int));
-    if (sorted_array == NULL)
-    {
-        return NULL;
-    }
+    if (tree->left)
+        height_l = 1 + tree_size(tree->left);
 
-    for (size_t i = 0; i < *size; ++i)
-    {
-        sorted_array[i] = heap_extract(&heap);
-    }
+    if (tree->right)
+        height_r = 1 + tree_size(tree->right);
 
-    return sorted_array;
+    return (height_l + height_r);
 }
 
 /**
- * heap_size - Calculates the size of the heap
- * @root: Pointer to the root of the heap
- * Return: The size of the heap
+ * heap_to_sorted_array - converts a Binary Max Heap
+ * to a sorted array of integers
+ * @heap: a pointer to the root node of the heap to convert
+ * @size: an address to store the size of the array
+ *
+ * Return: the generated array, NULL on failure
  */
-size_t heap_size(heap_t *root)
+int *heap_to_sorted_array(heap_t *heap, size_t *size)
 {
-    if (root == NULL)
-    {
-        return 0;
-    }
-    return 1 + heap_size(root->left) + heap_size(root->right);
+    int i;
+    int *array = NULL;
+
+    if (!heap || !size)
+        return (NULL);
+
+    *size = tree_size(heap) + 1;
+
+    array = malloc(sizeof(int) * (*size));
+
+    if (!array)
+        return (NULL);
+
+    for (i = 0; heap; i++)
+        array[i] = heap_extract(&heap);
+
+    return (array);
 }
