@@ -902,7 +902,7 @@ Is 128 full: 0
 alex@/tmp/binary_trees$
 ```
    
-#### [16. Is perfect]()
+#### [16. Is perfect](16-binary_tree_is_perfect.c)
 
 Write a function that checks if a binary tree is perfect
 
@@ -970,7 +970,7 @@ Perfect: 0
 alex@/tmp/binary_trees$
 ```
    
-#### [17. Sibling]()
+#### [17. Sibling](17-binary_tree_sibling.c)
 
 Write a function that finds the sibling of a node
 
@@ -1030,7 +1030,7 @@ Sibling of 98: (nil)
 alex@/tmp/binary_trees$
 ```
    
-#### [18. Uncle]()
+#### [18. Uncle](18-binary_tree_uncle.c)
 
 Write a function that finds the uncle of a node
 
@@ -1087,7 +1087,7 @@ Uncle of 12: (nil)
 alex@/tmp/binary_trees$
 ```
    
-#### [19. Lowest common ancestor]()
+#### [19. Lowest common ancestor](100-binary_trees_ancestor.c)
 
 Write a function that finds the lowest common ancestor of two nodes
 
@@ -1158,7 +1158,7 @@ Ancestor of [128] & [65]: 128
 alex@/tmp/binary_trees$
 ```
    
-#### [20. Level-order traversal]()
+#### [20. Level-order traversal](101-binary_tree_levelorder.c)
 
 Write a function that goes through a binary tree using level-order traversal
 
@@ -1234,7 +1234,7 @@ alex@/tmp/binary_trees$ valgrind ./101-lvl
 alex@/tmp/binary_trees$
 ```
    
-#### [21. Is complete]()
+#### [21. Is complete](102-binary_tree_is_complete.c)
 
 Write a function that checks if a binary tree is complete
 
