@@ -73,15 +73,16 @@ To match the examples in the tasks, you are given [this function](https://github
 
 ## *Tasks:*
 
-#### [0. New node]()
+#### [0. New node](0-binary_tree_node.c)
 
 Write a function that creates a binary tree node
 
-Prototype: binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
-Where parent is a pointer to the parent node of the node to create
-And value is the value to put in the new node
-When created, a node does not have any child
-Your function must return a pointer to the new node, or NULL on failure
+-   Prototype: `binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);`
+-   Where `parent` is a pointer to the parent node of the node to create
+-   And `value` is the value to put in the new node
+-   When created, a node does not have any child
+-   Your function must return a pointer to the new node, or `NULL` on failure
+
 ```
 alex@/tmp/binary_trees$ cat 0-main.c 
 #include <stdlib.h>
@@ -117,15 +118,16 @@ alex@/tmp/binary_trees$ ./0-node
 alex@/tmp/binary_trees$
 ```
    
-#### [1. Insert left]()
+#### [1. Insert left](1-binary_tree_insert_left.c)
 
 Write a function that inserts a node as the left-child of another node
 
-Prototype: binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
-Where parent is a pointer to the node to insert the left-child in
-And value is the value to store in the new node
-Your function must return a pointer to the created node, or NULL on failure or if parent is NULL
-If parent already has a left-child, the new node must take its place, and the old left-child must be set as the left-child of the new node.
+-   Prototype: `binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);`
+-   Where `parent` is a pointer to the node to insert the left-child in
+-   And `value` is the value to store in the new node
+-   Your function must return a pointer to the created node, or `NULL` on failure or if `parent` is `NULL`
+-   If `parent` already has a left-child, the new node must take its place, and the old left-child must be set as the left-child of the new node.
+
 ```
 alex@/tmp/binary_trees$ cat 1-main.c 
 #include <stdlib.h>
@@ -162,15 +164,15 @@ alex@/tmp/binary_trees$ ./1-left
 alex@/tmp/binary_trees$
 ```
    
-#### [2. Insert right]()
+#### [2. Insert right](2-binary_tree_insert_right.c)
 
 Write a function that inserts a node as the right-child of another node
 
-Prototype: binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);
-Where parent is a pointer to the node to insert the right-child in
-And value is the value to store in the new node
-Your function must return a pointer to the created node, or NULL on failure or if parent is NULL
-If parent already has a right-child, the new node must take its place, and the old right-child must be set as the right-child of the new node.
+-   Prototype: `binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);`
+-   Where `parent` is a pointer to the node to insert the right-child in
+-   And `value` is the value to store in the new node
+-   Your function must return a pointer to the created node, or `NULL` on failure or if `parent` is `NULL`
+-   If `parent` already has a right-child, the new node must take its place, and the old right-child must be set as the right-child of the new node.
 ```
 alex@/tmp/binary_trees$ cat 2-main.c 
 #include <stdlib.h>
@@ -207,13 +209,14 @@ alex@/tmp/binary_trees$ ./2-right
 alex@/tmp/binary_trees$
 ```
    
-#### [3. Delete]()
+#### [3. Delete](3-binary_tree_delete.c)
 
 Write a function that deletes an entire binary tree
 
-Prototype: void binary_tree_delete(binary_tree_t *tree);
-Where tree is a pointer to the root node of the tree to delete
-If tree is NULL, do nothing
+-   Prototype: `void binary_tree_delete(binary_tree_t *tree);`
+-   Where `tree` is a pointer to the root node of the tree to delete
+-   If `tree` is `NULL`, do nothing
+
 ```
 alex@/tmp/binary_trees$ cat 3-main.c 
 #include <stdlib.h>
@@ -260,14 +263,14 @@ alex@/tmp/binary_trees$ valgrind ./3-del
 alex@/tmp/binary_trees$
 ```
    
-#### [4. Is leaf]()
+#### [4. Is leaf](4-binary_tree_is_leaf.c)
 
 Write a function that checks if a node is a leaf
 
-Prototype: int binary_tree_is_leaf(const binary_tree_t *node);
-Where node is a pointer to the node to check
-Your function must return 1 if node is a leaf, otherwise 0
-If node is NULL, return 0
+-   Prototype: `int binary_tree_is_leaf(const binary_tree_t *node);`
+-   Where `node` is a pointer to the node to check
+-   Your function must return `1` if `node` is a leaf, otherwise `0`
+-   If `node` is `NULL`, return `0`
 ```
 alex@/tmp/binary_trees$ cat 4-main.c 
 #include <stdlib.h>
@@ -310,14 +313,14 @@ Is 402 a leaf: 1
 alex@/tmp/binary_trees$
 ```
    
-#### [5. Is root]()
+#### [5. Is root](5-binary_tree_is_root.c)
 
 Write a function that checks if a given node is a root
 
-Prototype: int binary_tree_is_root(const binary_tree_t *node);
-Where node is a pointer to the node to check
-Your function must return 1 if node is a root, otherwise 0
-If node is NULL, return 0
+-   Prototype: `int binary_tree_is_root(const binary_tree_t *node);`
+-   Where `node` is a pointer to the node to check
+-   Your function must return `1` if `node` is a root, otherwise `0`
+-   If `node` is `NULL`, return `0`
 ```
 alex@/tmp/binary_trees$ cat 5-main.c 
 #include <stdlib.h>
@@ -360,14 +363,14 @@ Is 402 a root: 0
 alex@/tmp/binary_trees$
 ```
    
-#### [6. Pre-order traversal]()
+#### [6. Pre-order traversal](6-binary_tree_preorder.c)
 
 Write a function that goes through a binary tree using pre-order traversal
 
-Prototype: void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int));
-Where tree is a pointer to the root node of the tree to traverse
-And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
-If tree or func is NULL, do nothing
+-   Prototype: `void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int));`
+-   Where `tree` is a pointer to the root node of the tree to traverse
+-   And `func` is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
+-   If `tree` or `func` is `NULL`, do nothing
 ```
 alex@/tmp/binary_trees$ cat 6-main.c
 #include <stdlib.h>
@@ -420,16 +423,17 @@ alex@/tmp/binary_trees$ ./6-pre
 alex@/tmp/binary_trees$
 ```
    
-#### [7. In-order traversal]()
+#### [7. In-order traversal](7-binary_tree_inorder.c)
 
 Write a function that goes through a binary tree using in-order traversal
 
-Prototype: void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int));
-Where tree is a pointer to the root node of the tree to traverse
-And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
-If tree or func is NULL, do nothing
-alex@/tmp/binary_trees$ cat 7-main.c
+-   Prototype: `void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int));`
+-   Where `tree` is a pointer to the root node of the tree to traverse
+-   And `func` is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
+-   If `tree` or `func` is `NULL`, do nothing
+
 ```
+alex@/tmp/binary_trees$ cat 7-main.c
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -480,14 +484,14 @@ alex@/tmp/binary_trees$ ./7-in
 alex@/tmp/binary_trees$
 ```
    
-#### [8. Post-order traversal]()
+#### [8. Post-order traversal](8-binary_tree_postorder.c)
 
 Write a function that goes through a binary tree using post-order traversal
 
-Prototype: void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));
-Where tree is a pointer to the root node of the tree to traverse
-And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
-If tree or func is NULL, do nothing
+-   Prototype: `void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));`
+-   Where `tree` is a pointer to the root node of the tree to traverse
+-   And `func` is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
+-   If `tree` or `func` is `NULL`, do nothing
 ```
 alex@/tmp/binary_trees$ cat 8-main.c
 #include <stdlib.h>
@@ -540,13 +544,13 @@ alex@/tmp/binary_trees$ ./8-post
 alex@/tmp/binary_trees$
 ```
    
-#### [9. Height]()
+#### [9. Height](9-binary_tree_height.c)
 
 Write a function that measures the height of a binary tree
 
-Prototype: size_t binary_tree_height(const binary_tree_t *tree);
-Where tree is a pointer to the root node of the tree to measure the height.
-If tree is NULL, your function must return 0
+-   Prototype: `size_t binary_tree_height(const binary_tree_t *tree);`
+-   Where `tree` is a pointer to the root node of the tree to measure the height.
+-   If `tree` is `NULL`, your function must return `0`
 ```
 alex@/tmp/binary_trees$ cat 9-main.c 
 #include <stdlib.h>
@@ -589,13 +593,14 @@ Height from 54: 0
 alex@/tmp/binary_trees$
 ```
 
-#### [10. Depth]()
+#### [10. Depth](10-binary_tree_depth.c)
 
 Write a function that measures the depth of a node in a binary tree
 
-Prototype: size_t binary_tree_depth(const binary_tree_t *tree);
-Where tree is a pointer to the node to measure the depth
-If tree is NULL, your function must return 0
+-   Prototype: `size_t binary_tree_depth(const binary_tree_t *tree);`
+-   Where `tree` is a pointer to the node to measure the depth
+-   If `tree` is `NULL`, your function must return `0`
+
 ```
 alex@/tmp/binary_trees$ cat 10-main.c 
 #include <stdlib.h>
@@ -638,13 +643,14 @@ Depth of 54: 2
 alex@/tmp/binary_trees$
 ```
 
-#### [11. Size]()
+#### [11. Size](11-binary_tree_size.c)
 
 Write a function that measures the size of a binary tree
 
-Prototype: size_t binary_tree_size(const binary_tree_t *tree);
-Where tree is a pointer to the root node of the tree to measure the size
-If tree is NULL, the function must return 0
+-   Prototype: `size_t binary_tree_size(const binary_tree_t *tree);`
+-   Where `tree` is a pointer to the root node of the tree to measure the size
+-   If `tree` is `NULL`, the function must return 0
+
 ```
 alex@/tmp/binary_trees$ cat 11-main.c 
 #include <stdlib.h>
@@ -687,14 +693,15 @@ Size of 54: 1
 alex@/tmp/binary_trees$
 ```
    
-#### [12. Leaves]()
+#### [12. Leaves](12-binary_tree_leaves.c)
 
 Write a function that counts the leaves in a binary tree
 
-Prototype: size_t binary_tree_leaves(const binary_tree_t *tree);
-Where tree is a pointer to the root node of the tree to count the number of leaves
-If tree is NULL, the function must return 0
-A NULL pointer is not a leaf
+-   Prototype: `size_t binary_tree_leaves(const binary_tree_t *tree);`
+-   Where `tree` is a pointer to the root node of the tree to count the number of leaves
+-   If `tree` is `NULL`, the function must return 0
+-   A `NULL` pointer is not a leaf
+
 ```
 alex@/tmp/binary_trees$ cat 12-main.c 
 #include <stdlib.h>
@@ -737,14 +744,15 @@ Leaves in 54: 1
 alex@/tmp/binary_trees$
 ```
    
-#### [13. Nodes]()
+#### [13. Nodes](13-binary_tree_nodes.c)
 
 Write a function that counts the nodes with at least 1 child in a binary tree
 
-Prototype: size_t binary_tree_nodes(const binary_tree_t *tree);
-Where tree is a pointer to the root node of the tree to count the number of nodes
-If tree is NULL, the function must return 0
-A NULL pointer is not a node
+-   Prototype: `size_t binary_tree_nodes(const binary_tree_t *tree);`
+-   Where `tree` is a pointer to the root node of the tree to count the number of nodes
+-   If `tree` is `NULL`, the function must return 0
+-   A `NULL` pointer is not a node
+
 ```
 alex@/tmp/binary_trees$ cat 13-main.c
 #include <stdlib.h>
@@ -787,13 +795,14 @@ Nodes in 54: 0
 alex@/tmp/binary_trees$
 ```
    
-#### [14. Balance factor]()
+#### [14. Balance factor](14-binary_tree_balance.c)
 
 Write a function that measures the balance factor of a binary tree
 
-Prototype: int binary_tree_balance(const binary_tree_t *tree);
-Where tree is a pointer to the root node of the tree to measure the balance factor
-If tree is NULL, return 0
+-   Prototype: `int binary_tree_balance(const binary_tree_t *tree);`
+-   Where `tree` is a pointer to the root node of the tree to measure the balance factor
+-   If `tree` is `NULL`, return `0`
+
 ```
 alex@/tmp/binary_trees$ cat 14-main.c 
 #include <stdlib.h>
@@ -842,13 +851,14 @@ Balance of 54: +0
 alex@/tmp/binary_trees$
 ```
    
-#### [15. Is full]()
+#### [15. Is full](15-binary_tree_is_full.c)
 
 Write a function that checks if a binary tree is full
 
-Prototype: int binary_tree_is_full(const binary_tree_t *tree);
-Where tree is a pointer to the root node of the tree to check
-If tree is NULL, your function must return 0
+-   Prototype: `int binary_tree_is_full(const binary_tree_t *tree);`
+-   Where `tree` is a pointer to the root node of the tree to check
+-   If `tree` is `NULL`, your function must return `0`
+
 ```
 alex@/tmp/binary_trees$ cat 15-main.c
 #include <stdlib.h>
@@ -896,9 +906,10 @@ alex@/tmp/binary_trees$
 
 Write a function that checks if a binary tree is perfect
 
-Prototype: int binary_tree_is_perfect(const binary_tree_t *tree);
-Where tree is a pointer to the root node of the tree to check
-If tree is NULL, your function must return 0
+-   Prototype: `int binary_tree_is_perfect(const binary_tree_t *tree);`
+-   Where `tree` is a pointer to the root node of the tree to check
+-   If `tree` is `NULL`, your function must return `0`
+
 ```
 alex@/tmp/binary_trees$ cat 16-main.c
 #include <stdlib.h>
@@ -963,11 +974,12 @@ alex@/tmp/binary_trees$
 
 Write a function that finds the sibling of a node
 
-Prototype: binary_tree_t *binary_tree_sibling(binary_tree_t *node);
-Where node is a pointer to the node to find the sibling
-Your function must return a pointer to the sibling node
-If node is NULL or the parent is NULL, return NULL
-If node has no sibling, return NULL
+-   Prototype: `binary_tree_t *binary_tree_sibling(binary_tree_t *node);`
+-   Where `node` is a pointer to the node to find the sibling
+-   Your function must return a pointer to the sibling node
+-   If `node` is `NULL` or the parent is `NULL`, return `NULL`
+-   If `node` has no sibling, return `NULL`
+
 ```
 alex@/tmp/binary_trees$ cat 17-main.c
 #include <stdlib.h>
@@ -1022,11 +1034,12 @@ alex@/tmp/binary_trees$
 
 Write a function that finds the uncle of a node
 
-Prototype: binary_tree_t *binary_tree_uncle(binary_tree_t *node);
-Where node is a pointer to the node to find the uncle
-Your function must return a pointer to the uncle node
-If node is NULL, return NULL
-If node has no uncle, return NULL
+-   Prototype: `binary_tree_t *binary_tree_uncle(binary_tree_t *node);`
+-   Where `node` is a pointer to the node to find the uncle
+-   Your function must return a pointer to the uncle node
+-   If `node` is `NULL`, return `NULL`
+-   If `node` has no uncle, return `NULL`
+
 ```
 alex@/tmp/binary_trees$ cat 18-main.c
 #include <stdlib.h>
@@ -1078,11 +1091,12 @@ alex@/tmp/binary_trees$
 
 Write a function that finds the lowest common ancestor of two nodes
 
-Prototype: binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second);
-Where first is a pointer to the first node
-And second is a pointer to the second node
-Your function must return a pointer to the lowest common ancestor node of the two given nodes
-If no common ancestor was found, your function must return NULL
+- Prototype: `binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second);`
+- Where `first` is a pointer to the first node
+- And `second` is a pointer to the second node
+- Your function must return a pointer to the lowest common ancestor node of the two given nodes
+- If no common ancestor was found, your function must return `NULL`
+
 ```
 alex@/tmp/binary_trees$ cat 100-main.c
 #include <stdlib.h>
@@ -1148,10 +1162,11 @@ alex@/tmp/binary_trees$
 
 Write a function that goes through a binary tree using level-order traversal
 
-Prototype: void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
-Where tree is a pointer to the root node of the tree to traverse
-And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
-If tree or func is NULL, do nothing
+- Prototype: `void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));`
+- Where `tree` is a pointer to the root node of the tree to traverse
+- And `func` is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
+- If `tree` or `func` is `NULL`, do nothing
+
 ```
 alex@/tmp/binary_trees$ cat 101-main.c
 #include <stdlib.h>
@@ -1223,9 +1238,9 @@ alex@/tmp/binary_trees$
 
 Write a function that checks if a binary tree is complete
 
-Prototype: int binary_tree_is_complete(const binary_tree_t *tree);
-Where tree is a pointer to the root node of the tree to check
-If tree is NULL, your function must return 0
+- Prototype: `int binary_tree_is_complete(const binary_tree_t *tree);`
+- Where `tree` is a pointer to the root node of the tree to check
+- If `tree `is `NULL`, your function must return `0`
 ```
 alex@/tmp/binary_trees$ cat 102-main.c
 #include <stdlib.h>
